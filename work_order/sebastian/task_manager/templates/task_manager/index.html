@@ -1,0 +1,27 @@
+{% extends "./base.html" %}
+
+{% block title %}Welcome to Work Order Application Developed By Sebastian O{% endblock %}
+<section>
+  <center>
+    {% block content %}
+    <pre>
+      <h1 style="text-align:center;">Welcome to Work Order Application Developed By <strong>Sebastian O</strong></h1>
+      {% if user.is_authenticated %}
+        <h2 class="w3-card w3-padding-16 w3-light-grey">Your teams:</h2><br />
+        <ul class="w3-ul w3-hoverable w3-card-4">
+            {% for team in teams %}
+              <li class="w3-bar">
+                <a href={{ team.get_absolute_url }} class="w3-bar-item">{{ team.name }}</a>
+              </li>
+            {% empty %}
+              <li class="w3-bar">You are not in any team</li>
+            {% endfor %}
+        </ul>
+      {% else %}
+        <center><h2>Please login or Signup before you can access the application </h2></center>
+      {% endif %}
+    {% endblock %}
+    </pre>
+    
+    </center>
+</section>
